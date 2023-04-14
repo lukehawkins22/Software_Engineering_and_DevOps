@@ -1,0 +1,29 @@
+{% extends 'ITHelpDesk/base.html' %}
+{% block content %}
+{% load static %}
+<p>To create a new helpdesk ticket, please enter the following information.</p>
+<div class="container">
+  <form method="post">
+      {% csrf_token %}
+      <div class="mb-3">
+          <label for="id_ticket_title" class="form-label">Ticket Title</label>
+          <input type="text" class="form-control" name="ticket_title" maxlength="1000" required id="id_ticket_title" aria-describedby="titleHelp">
+          <div id="titleHelp" class="form-text">Required. Enter a title for your support ticket.</div>
+      </div>
+      <div class="mb-3">
+          <label for="id_ticket_description" class="form-label">Ticket Description</label>
+          <textarea name="ticket_description" class="form-control" cols="50" rows="5" maxlength="1000" required id="id_ticket_description" aria-describedby="descriptionHelp"></textarea>
+          <div id="descriptionHelp" class="form-text">Required. Please enter a description of you issue.</div>
+      </div>
+      <input type="submit" value="Submit Ticket">
+  </form>
+</div>
+<br>
+<button onclick="goBack()">Back</button>
+<!-- <script src="{% static 'warningonclose.js' %}"></script> -->
+<script>
+function goBack() {
+window.history.back();
+}
+</script>
+{% endblock %}

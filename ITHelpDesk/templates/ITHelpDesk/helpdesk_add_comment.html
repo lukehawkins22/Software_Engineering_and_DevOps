@@ -1,0 +1,26 @@
+{% extends 'ITHelpDesk/base.html' %}
+{% block content %}
+{% load static %}
+    <h2>Add Help Desk Comment</h2>
+    <p>Please add your comment below.</p>
+    <div class="container">
+      <form method="post">
+          {% csrf_token %}
+          <div class="mb-3">
+              <label for="id_comment_text" class="form-label">Comment Text</label>
+              <textarea name="comment_text" class="form-control" cols="50" rows="5" maxlength="500" required id="id_comment_text" aria-describedby="commentHelp"></textarea>
+              <div id="commentHelp" class="form-text">Required. Please enter your comment.</div>
+          </div>
+          <input type="submit" value="Add Comment">
+      </form>
+    </div>
+    <br>
+    <button onclick="goBack()">Back</button>
+    <!-- <script src="{% static 'warningonclose.js' %}"></script> -->
+    <script>
+    function goBack() {
+    window.history.back();
+    }
+    </script>
+    {% endblock %}
+  </body>
