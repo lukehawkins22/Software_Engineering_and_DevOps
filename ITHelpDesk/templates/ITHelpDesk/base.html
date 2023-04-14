@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Helpdesk Management System</title>
+
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/jquery-3.6.4.js"></script>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}">IT Helpdesk Management System</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'create-ticket' %}">Create Ticket</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'view-my-tickets' %}">View My Tickets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'view-all-tickets' %}">View All Tickets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+    <footer class="bg-teal text-white py-3">
+        <div class="container">
+            <p class="mb-0">Copyright &copy; {% now 'Y' %}
+            <a class="text-white" href="{% url 'home' %}">IT Helpdesk Management System</a>
+            <br>
+            <a class="text-white" href="{% url 'admin:index' %}">Admin</a>
+            </p>
+        </div>
+        </footer>

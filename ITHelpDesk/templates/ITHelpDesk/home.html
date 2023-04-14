@@ -1,0 +1,32 @@
+{% extends 'ITHelpDesk/base.html' %}
+{% block content %}
+<div class="container my-5">
+    <h1 class="text-center mb-4">Welcome to the IT Helpdesk Management System</h1>  
+      {% if user.is_authenticated %}
+        <h2 class="text-center mb-4">User Dashboard</h2>  
+        <p class="text-center mb-4">Username: {{ user.username|default:'Not Logged In' }}</p>
+          <div class="row justify-content-center">
+            <div class="col-md-4 mb-3">
+              <div class="card text-white bg-success mb-3">
+                <div class="card-header">Total Tickets Raised</div>
+                <div class="card-body">
+                  <h5 class="card-title">{{ total_tickets }}</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="card text-white bg-success mb-3">
+                <div class="card-header">Open Tickets</div>
+                <div class="card-body">
+                  <h5 class="card-title">{{ open_tickets }}</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        <p class="text-center mb-4">Please select an option from the menu bar above.</p> 
+      {% else %}
+      <h2 class="text-center mb-4">To Make Use of This System, You Need to be Logged In</h1> 
+      <p class="text-center mb-4">Please select an option from the menu bar above to continue.</p> 
+      {% endif %}
+  </div>
+{% endblock %}

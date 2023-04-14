@@ -1,0 +1,30 @@
+{% extends 'ITHelpDesk/base.html' %}
+{% block content %}
+    <h2>View Help Desk Ticket</h2>
+    <p>Below, please see all IT Helpdesk Tickets that have been raised.</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Action</th>
+                <th>Ticket ID</th>
+                <th>Title</th>
+                <th>Status</th>
+                <th>Reported By</th>
+                <th>Date Created</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ticket in allTickets %}
+                <tr>
+                    <td><a href="{% url 'edit-ticket' ticket.helpdesk_ticket_id %}">View/Edit</a></td>
+                    <td>{{ ticket.helpdesk_ticket_id }}</td>
+                    <td>{{ ticket.ticket_title }}</td>
+                    <td>{{ ticket.ticket_status }}</td>
+                    <td>{{ ticket.ticket_user }}</td>
+                    <td>{{ ticket.ticket_time_created_at }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button onclick=location.href="{% url 'home'%}">Back</button>
+{% endblock %}
