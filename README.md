@@ -1,6 +1,15 @@
 # Software_Engineering_and_Agile_New
 This ReadMe document can be used to learn about the Help Desk application.
 
+This application is running and accessible here:
+http://ec2-18-132-12-230.eu-west-2.compute.amazonaws.com:8000/
+
+Admin page is accessible via the link at the bottom of the homepage, or directly here:
+http://ec2-18-132-12-230.eu-west-2.compute.amazonaws.com:8000/admin/login/?next=/admin/
+Please conduct all admin actions via the admin interface. 
+Admin Account Username: qaadmin
+Admin Account Password: QAtutor123
+
 Dependencies:
 1. Python
 2. Django Web Framework

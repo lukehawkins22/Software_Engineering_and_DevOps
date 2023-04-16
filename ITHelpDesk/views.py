@@ -1,3 +1,8 @@
+# References 
+# Django (no date a) Form handling with class-based views. Available at: https://docs.djangoproject.com/en/4.2/topics/class-based-views/generic-editing/ (Accessed: 16 April 2023).
+# Django (no date b) Using the Django authentication system. Available at: https://docs.djangoproject.com/en/4.2/topics/auth/default/ (Accessed: 16 April 2023).
+# Django (no date c) Writing Views. Available at: https://docs.djangoproject.com/en/4.2/topics/http/views/ (Accessed: 16 April 2023).
+
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
@@ -15,10 +20,9 @@ from .models import Ticket
 from .models import Comment
 from django.contrib import messages
 
-# Create your views here.
-
 #The below view definition handles the rendering and display of the home view.
 #When the home view is called, it will display home.html file.
+#Django(no date c)
 def home(request):
     if request.user.is_authenticated:
         open_tickets = Ticket.objects.filter(ticket_user=request.user, ticket_status='Open').count()
@@ -31,6 +35,7 @@ def home(request):
 #The below class is used to handle all logic required for the user sign up page to be funtional. It provides the HelpdeskUserCreationForm
 #to be rendered, and also defines what should happen if the form submission is a success. In this case, it will redirect to the login view.
 #It also states which HTML should be rendered when the class is called as a view. It renders signup.html
+#Django(no date c)
 class SignUp(CreateView):
     form_class = HelpdeskUserCreationForm
     success_url = reverse_lazy("login")
@@ -40,6 +45,7 @@ class SignUp(CreateView):
 #to be rendered, and also defines what should happen if the form submission is a success. In this case, it will redirect to the home view.
 #It also states which HTML should be rendered when the class is called as a view. It renders helpdesk_create_ticket.html
 #It also uses the LoginRequiredMixin which ensures a user is logged in to view the form. 
+#Django(no date c)
 class CreateHelpdeskTicket(LoginRequiredMixin, CreateView):
     form_class = TicketForm
     success_url = reverse_lazy("view-my-tickets")
@@ -47,6 +53,7 @@ class CreateHelpdeskTicket(LoginRequiredMixin, CreateView):
     
     #The below method checks whether the form meets the required criteria defined within the forms.py, then runs the save method.
     #It also will display a success message on the page which the user is redirected to when the form is submitted.
+    #Django(no date a)
     def form_valid(self, form):
         messages.success(self.request, 'Your ticket was successfully created.')
         form.save(request=self.request)
@@ -56,21 +63,17 @@ class CreateHelpdeskTicket(LoginRequiredMixin, CreateView):
 #to be rendered, and also defines what should happen if the form submission is a success. In this case, it will redirect to the home view.
 #It also states which HTML should be rendered when the class is called as a view. It renders helpdesk_edit_ticket.html. 
 #This view is also needed to supply the relevent information from the Ticket model based on the ID which is passed into the URL.
+#Django(no date c)
 class EditHelpdeskTicket(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     form_class = TicketForm
     model = Ticket
     success_url = reverse_lazy("view-my-tickets")
     template_name = "ITHelpDesk/helpdesk_edit_ticket.html"
 
-    # def get_object(self, queryset=None):
-    #     try:
-    #         return super().get_object(queryset)
-    #     except Http404:
-    #         return None
-
     #This test is used to check if the logged in user matches that of the user ID resgistered for the ticket model being edited.
     #It returns a true of false bool. If it is false, the request is not valid and forbidden. The handling of a false reponse is 
     #dealt with within the below method.
+    #Django(no date b)
     def test_func(self):
         ticket_check = self.get_object()
         if self.request.user == ticket_check.ticket_user:
@@ -79,7 +82,8 @@ class EditHelpdeskTicket(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
             return False
 
     #This test is used to check if there is a logged in user. If there is no logged in user, they are redirected the login view. 
-    #If the user is logged in, they are displayed the not_authorised.html    
+    #If the user is logged in, they are displayed the not_authorised.html  
+    #Django(no date b)  
     def handle_no_permission(self):
         if self.request.user.is_authenticated:
             return HttpResponseForbidden(render(self.request, 'ITHelpDesk/not_authorised.html'))
@@ -88,6 +92,7 @@ class EditHelpdeskTicket(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     #The below method checks whether the form meets the required criteria defined within the forms.py, then runs the save method.
     #It also will display a success message on the page which the user is redirected to when the form is submitted.
+    #Django(no date a)
     def form_valid(self, form):
         messages.success(self.request, 'Your ticket was successfully updated.')
         form.save(commit=True, request=self.request)
@@ -96,6 +101,8 @@ class EditHelpdeskTicket(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 #The below view definition handles the rendering and display of the view_user_tickets view.
 #When the view is called, it will display helpdesk_view_user_tickets.html file. It also filters the display so that it shows 
 #only tickets matching the logged in users ID.
+#Django(no date c)
+#Django(no date b)  
 @login_required #The user must be logged in for the view to be rendered.
 def view_user_tickets(request):
     userTickets = Ticket.objects.filter(ticket_user=request.user)
@@ -103,6 +110,8 @@ def view_user_tickets(request):
 
 #The below view definition handles the rendering and display of the view_all_tickets view.
 #When the view is called, it will display helpdesk_view_all_tickets.html file. 
+#Django(no date c)
+#Django(no date b)  
 @login_required #The user must be logged in for the view to be rendered.
 def view_all_tickets(request):
     allTickets = Ticket.objects.all()
@@ -113,6 +122,7 @@ def view_all_tickets(request):
 #In this case, it will redirect to the edit ticket page relating to the relevant ticket.
 #It also states which HTML should be rendered when the class is called as a view. It renders helpdesk_add_comment.html. 
 #This view is also needed to supply the relevent information from the comment model based on the ticket ID which is passed into the URL.
+#Django(no date c)
 class AddTicketComment(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     form_class = CommentForm
     model = Comment
@@ -120,12 +130,14 @@ class AddTicketComment(LoginRequiredMixin, UserPassesTestMixin, CreateView):
 
     #This test is used to check if the ticketID of the ticket which the comment is linked to matches that of the logged in users ID.
     #It also checks that the ticket itsef exists.
+    #Django(no date b)  
     def test_func(self):
         ticket = Ticket.objects.get(pk=self.kwargs['pk'])
         return self.request.user == ticket.ticket_user
 
     #The below method sets the comment_user equal to that of the logged in user. It also sets the ticket ID to that of the PK from the URL.
     #It will display a success message on the success page when the form is successfully submitted and redirect to the edit ticket page for that ticket. 
+    #Django(no date a)
     def form_valid(self, form):
         form.instance.comment_user = self.request.user
         form.instance.helpdesk_ticket_id_id = self.kwargs['pk']
@@ -135,17 +147,21 @@ class AddTicketComment(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     
     #This test is used to check if there is a logged in user. If there is no logged in user, they are redirected the login view. 
     #If the user is logged in, they are displayed the not_authorised.html   
+    #Django(no date b)  
     def handle_no_permission(self):
         if self.request.user.is_authenticated:
             return HttpResponseForbidden(render(self.request, 'ITHelpDesk/not_authorised.html'))
         else:
             return redirect('login')
 
+#Django(no date c)
 def handler404(request, exception):
     return render(request, 'ITHelpDesk/page_not_found.html', status=404)
 
+#Django(no date c)
 def handler400(request, exception):
     return render(request, 'ITHelpDesk/page_not_found.html', status=400)
 
+#Django(no date c)
 def handler500(request):
     return render(request, 'ITHelpDesk/page_not_found.html', status=500)
