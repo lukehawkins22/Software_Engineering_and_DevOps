@@ -1,8 +1,10 @@
 {% extends 'ITHelpDesk/base.html' %}
 {% block content %}
 {% load static %}
+<!-- Displays the title and instructions for edit ticket page -->
 <h2>View/Edit Help Desk Ticket</h2>
 <p>To edit the helpdesk ticket, please make the changes below.</p>
+<!-- Displays the edit ticket Django form -->
 <div class="container">
   <form method="post">
     {% csrf_token %}
@@ -10,7 +12,7 @@
     <button type="submit">Save Changes</button>
   </form>
 </div>
-
+<!-- Displays the comments for a ticket -->
 <h2>Comments:</h2>
 {% for comment in ticket.comment_set.all %}
   <div>
@@ -29,5 +31,4 @@
 <br>
 <br>
 <br>
-<!-- <script src="{% static 'warningonclose.js' %}"></script> -->
 {% endblock %}
