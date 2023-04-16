@@ -1,3 +1,8 @@
+# References
+# JavaTPoint (no date) Django usercreationform. Available at: https://www.javatpoint.com/django-usercreationform (Accessed: 16 April 2023).
+# Django (no date) Working With Forms. Available at: https://docs.djangoproject.com/en/4.2/topics/forms/ (Accessed: 16 April 2023).
+
+
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -6,6 +11,7 @@ from .models import Ticket, Comment
 #The below class defines the Django form which I have used to create a user within the Django User model.
 #There is already a predefined UserCreationForm as part of the Django framework.
 #I have expanded the functionlaity of this form, creating HelpdeskUserCreationForm, which also collects email, firstname and lastname details.
+#JavaTPoint(no date)
 class HelpdeskUserCreationForm(UserCreationForm):
     email = forms.EmailField(max_length=254, help_text='Required. Please enter your email address.')
     first_name = forms.CharField(max_length=30, required=True, help_text='Required.')
@@ -20,6 +26,7 @@ class HelpdeskUserCreationForm(UserCreationForm):
 #The below class creates a form to be displayed in the UI which handles the creation and edits of Tickets stored within the ticket model.
 #The form only needs to collect 2 of the fields from the user, these being the title and the description. The others are autofilled by the model.
 #The ticket_title and ticket_description fields have certain restrctions around them which must be met for the form to be submitted.
+#Django(no date)
 class TicketForm(forms.ModelForm):
     ticket_title = forms.CharField(max_length=1000, required=True, help_text='Required.')
     ticket_description = forms.CharField(widget=forms.Textarea(attrs={'rows': 5, 'cols': 50}), max_length=1000, required=True, help_text='Required.')
@@ -43,7 +50,7 @@ class TicketForm(forms.ModelForm):
 #The below class creates a form to be displayed in the UI which handles the creation of comments stored within the comment model.
 #The form only needs to collect 1 of the field from the user, these being the comment text. The others are autofilled by the model.
 #The comment_text field has certain restrctions around it which must be met for the form to be submitted.
-
+#Django(no date)
 class CommentForm(forms.ModelForm):
     comment_text = forms.CharField(widget=forms.Textarea(attrs={'rows': 5, 'cols': 50}), max_length=500, required=True)
 
