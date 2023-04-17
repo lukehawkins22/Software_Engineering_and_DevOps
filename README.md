@@ -10,6 +10,8 @@ Please conduct all admin actions via the admin interface.
 Admin Account Username: qaadmin
 Admin Account Password: QAtutor123
 
+Feel free to create new users and tickets to test fucntionality
+
 Dependencies:
 1. Python (Latest Version Preferable)
 2. Django Web Framework (Latest Version Preferable)
