@@ -11,9 +11,9 @@ Admin Account Username: qaadmin
 Admin Account Password: QAtutor123
 
 Dependencies:
-1. Python
-2. Django Web Framework
-3. This Github repository
+1. Python (Latest Version Preferable)
+2. Django Web Framework (Latest Version Preferable)
+3. This GitHub Repository
 4. Web browser of your choice
 
 Installation:
@@ -43,6 +43,8 @@ For running on LocalHost:
 ```bash
 python3 manage.py runserver 
 ```
+
+Unit tests can be found here: ITHelpDesk/tests. There are 2 test files, test_forms.py and test_views.py.
 
 Application Files:
 1. admin.py: Used to handle the configuaration of the Django Admin Interface. Different object views and setups are configured within these files.
