@@ -1,8 +1,10 @@
 {% extends 'ITHelpDesk/base.html' %}
 {% block content %}
+<!-- Defines user login page, shows title and instructions -->
 <h2>User Login</h2>
 <p>Please supply the following information, then press &quot;Login&quot;</p>
 <body>
+  <!-- Displays user login Django form -->
   <form method="post">
     {% csrf_token %}
     <table>

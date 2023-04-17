@@ -1,7 +1,9 @@
 {% extends 'ITHelpDesk/base.html' %}
 {% block content %}
+<!-- Displays the title and instructions for view user tickets page -->
 <h2>View My Help Desk Tickets</h2>
 <p>Below, please see all IT Helpdesk Tickets reported by you.</p>
+<!-- Defines table structure for displaying ticket details -->
 <table>
     <thead>
         <tr>
@@ -13,6 +15,7 @@
             <th>Date Created</th>
         </tr>
     </thead>
+    <!-- Defines what is shown in each column of the table -->
     <tbody>
         {% for ticket in userTickets %}
             <tr>

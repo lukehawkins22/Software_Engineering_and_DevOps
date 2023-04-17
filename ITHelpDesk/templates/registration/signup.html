@@ -6,9 +6,11 @@
         align-items: center;
     }
 </style>
+<!-- Defines title and instructions for user sign up page -->
 <h2 style="text-align: center;">New User Creation</h2>
 <p style="text-align: center;">To create a new user account, please supply the following information.</p>
 <div class="container">
+    <!-- Displays user creation Django form -->
     <form method="post">
         {% csrf_token %}
         <div class="mb-3">

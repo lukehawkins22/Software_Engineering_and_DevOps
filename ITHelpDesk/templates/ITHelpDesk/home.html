@@ -1,8 +1,10 @@
 {% extends 'ITHelpDesk/base.html' %}
 {% block content %}
+<!-- Defines title and home page detail including instructions and ticket counters -->
 <div class="container my-5">
     <h1 class="text-center mb-4">Welcome to the IT Helpdesk Management System</h1>  
       {% if user.is_authenticated %}
+      <!-- Only displays the below if user is authenticated -->
         <h2 class="text-center mb-4">User Dashboard</h2>  
         <p class="text-center mb-4">Username: {{ user.username|default:'Not Logged In' }}</p>
           <div class="row justify-content-center">
@@ -25,6 +27,7 @@
           </div>
         <p class="text-center mb-4">Please select an option from the menu bar above.</p> 
       {% else %}
+      <!-- Displays if user isnt authenticated -->
       <h2 class="text-center mb-4">To Make Use of This System, You Need to be Logged In</h1> 
       <p class="text-center mb-4">Please select an option from the menu bar above to continue.</p> 
       {% endif %}

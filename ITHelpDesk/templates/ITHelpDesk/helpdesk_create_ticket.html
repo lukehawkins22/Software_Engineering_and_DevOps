@@ -1,7 +1,9 @@
 {% extends 'ITHelpDesk/base.html' %}
 {% block content %}
 {% load static %}
+<!-- Ticket creation title and instructions -->
 <p>To create a new helpdesk ticket, please enter the following information.</p>
+<!-- Displays ticket creation form defined in Django forms -->
 <div class="container">
   <form method="post">
       {% csrf_token %}
@@ -20,7 +22,7 @@
 </div>
 <br>
 <button onclick="goBack()">Back</button>
-<!-- <script src="{% static 'warningonclose.js' %}"></script> -->
+<!-- Code to route back to previous page if back button pressed -->
 <script>
 function goBack() {
 window.history.back();
