@@ -44,7 +44,7 @@ For running on LocalHost:
 python3 manage.py runserver 
 ```
 
-Unit tests can be found here: ITHelpDesk/tests. There are 2 test files, test_forms.py and test_views.py.
+Unit tests can be found here: ITHelpDesk/tests. There are 2 test files, test_forms.py and test_views.py. Commands to run these can be found as a comment at the top of each file.
 
 Application Files:
 1. admin.py: Used to handle the configuaration of the Django Admin Interface. Different object views and setups are configured within these files.
