@@ -34,7 +34,7 @@ pip install django
 3. Ensure a SQLiteDB has been installed as part of the Django install. This should be located within the application directory.
 4. Clone this code repository to the server which you want to run the application on. It needs to run in the location where Django and Python have access to. 
 ```bash
-git clone https://github.com/lukehawkins22/Software_Engineering_and_Agile.git
+git clone https://github.com/lukehawkins22/Software_Engineering_and_Agile_New.git
 ```
 5. When ready to launch, start the application by running this command in the top level git repo folder. 
 For running on server:
