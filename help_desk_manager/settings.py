@@ -28,6 +28,8 @@ DEBUG = True
 ALLOWED_HOSTS = ['*'] #Set like this to allow me to run on EC2 as host names change. 
 
 CSRF_TRSUTED_ORIGINS = ['https://it-help-desk.onrender.com','https://*.onrender.com', 'http://127.0.0.1']
+CSRF_ALLOWED_ORIGINS = ['https://it-help-desk.onrender.com','https://*.onrender.com', 'http://127.0.0.1']
+CORS_ORIGINS_WHITELIST = ['https://it-help-desk.onrender.com','https://*.onrender.com', 'http://127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
