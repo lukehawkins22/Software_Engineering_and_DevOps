@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from ITHelpDesk.models import Ticket, Comment
 
 #pytest ITHelpDesk\tests\test_views.py -v -c ITHelpDesk\tests\pytest.ini
+#can be run using github actions
 
 #Test to confirm that the home view displays the correct content if the user is not authenticated.
 def test_home_not_authenticated(client):
