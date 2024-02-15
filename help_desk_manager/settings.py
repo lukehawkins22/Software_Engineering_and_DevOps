@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*'] #Set like this to allow me to run on EC2 as host names change. 
 
-
+CSRF_TRSUTED_ORIGINS = ['https://*.onrender.com', 'http://127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
