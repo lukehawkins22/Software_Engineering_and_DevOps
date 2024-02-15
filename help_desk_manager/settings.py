@@ -28,8 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*'] #Set like this to allow me to run on EC2 as host names change. 
 
 CSRF_TRUSTED_ORIGINS = ['https://it-help-desk.onrender.com','https://*.onrender.com', 'http://127.0.0.1','http://*.onrender.com']
-CSRF_ALLOWED_ORIGINS = ['https://it-help-desk.onrender.com','https://*.onrender.com', 'http://127.0.0.1']
-CORS_ORIGINS_WHITELIST = ['https://it-help-desk.onrender.com','https://*.onrender.com', 'http://127.0.0.1']
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders',
     'ITHelpDesk',
 ]
 
@@ -51,7 +49,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'help_desk_manager.urls'
