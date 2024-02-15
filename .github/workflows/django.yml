@@ -30,3 +30,4 @@ jobs:
     - name: Run Tests
       run: |
         pytest ITHelpDesk/tests/test_views.py -v -c ITHelpDesk/tests/pytest.ini
+        pytest ITHelpDesk/tests/test_forms.py -v -c ITHelpDesk/tests/pytest.ini
