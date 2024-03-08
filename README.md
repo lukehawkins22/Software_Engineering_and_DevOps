@@ -1,11 +1,15 @@
-# Software_Engineering_and_Agile_New
+# Software_Engineering_and_DevOps
 This ReadMe document can be used to learn about the Help Desk application.
 
 This application is running and accessible here:
-http://ec2-18-132-12-230.eu-west-2.compute.amazonaws.com:8000/
+
+Eng Environment: https://it-help-desk-eng.onrender.com/
+Prod Environment: https://it-help-desk.onrender.com/
 
 Admin page is accessible via the link at the bottom of the homepage, or directly here:
-http://ec2-18-132-12-230.eu-west-2.compute.amazonaws.com:8000/admin/login/?next=/admin/
+https://it-help-desk.onrender.com/admin/login/?next=/admin/ or
+https://it-help-desk-eng.onrender.com/admin/login/?next=/admin/
+
 Please conduct all admin actions via the admin interface. 
 Admin Account Username: qaadmin
 Admin Account Password: QAtutor123
@@ -18,6 +22,8 @@ Dependencies:
 3. This GitHub Repository
 4. Web browser of your choice
 
+See requirements.txt for a list of all required python packages.
+
 Installation:
 To install and setup this application, follow the below steps.
 1. Install Python. This must be installed on the machine running the app and it must be accessible from the application directory. An example Ubuntu command to install Python can be seen below:
@@ -27,23 +33,22 @@ sudo apt-get update
 ```bash
 sudo apt install python3-pip -y
 ```
-2. Install Django framework. This can be done by following steps listed here https://docs.djangoproject.com/en/4.1/intro/install/. An example Ubuntu command to install Django can be seen below
+2. Install dependencies framework. This can be done by following steps listed here https://docs.djangoproject.com/en/4.1/intro/install/. An example Ubuntu command to install Django and other dependencies can be seen below:
 ```bash
-pip install django
+pip install -r requirements.txt
 ```
-3. Ensure a SQLiteDB has been installed as part of the Django install. This should be located within the application directory.
-4. Clone this code repository to the server which you want to run the application on. It needs to run in the location where Django and Python have access to. 
+3. Clone this code repository to the server which you want to run the application on. It needs to run in the location where Django and Python have access to. 
 ```bash
-git clone https://github.com/lukehawkins22/Software_Engineering_and_Agile_New.git
+git clone https://github.com/lukehawkins22/Software_Engineering_and_DevOps.git
 ```
-5. When ready to launch, start the application by running this command in the top level git repo folder. 
+4. When ready to launch, start the application by running this command in the top level git repo folder. 
 For running on server:
 ```bash
-python3 manage.py runserver 0.0.0.0:8000
+python manage.py runserver 0.0.0.0:8000 --noreload
 ```
 For running on LocalHost:
 ```bash
-python3 manage.py runserver 
+python manage.py runserver 
 ```
 
 Unit tests can be found here: ITHelpDesk/tests. There are 2 test files, test_forms.py and test_views.py. Commands to run these can be found as a comment at the top of each file.
@@ -68,4 +73,3 @@ Database: The db.sqlite3 file is the database which is used within the applicati
 
 Throughout this application, there are a number of different classes, methods and functions used. The purpose behind each of these can be located within the code comments in the individual .py files. These provide a comprehensive overview of the purpose of each section of code. 
 
-For a detailed overview of the various application flows, refer to the design document within Task 1 of the assignment. 
