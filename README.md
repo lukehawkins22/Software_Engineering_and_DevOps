@@ -44,10 +44,11 @@ git clone https://github.com/lukehawkins22/Software_Engineering_and_DevOps.git
 4. When ready to launch, start the application by running this command in the top level git repo folder. 
 For running on server:
 ```bash
-python manage.py runserver 0.0.0.0:8000 --noreload
+python startup.py
 ```
 For running on LocalHost:
 ```bash
+python manage.py collectstatic
 python manage.py runserver 
 ```
 
