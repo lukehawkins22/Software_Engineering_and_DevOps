@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-cv4=t0qp+gv4h83k0u43b2$ozay(rne4v7g2pc175g#g1d33f0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*'] #Set like this to allow me to run on EC2 as host names change. 
 
